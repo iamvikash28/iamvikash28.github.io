@@ -1,705 +1,179 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vikash Verma — Data Analyst</title>
-<meta name="description" content="Vikash Verma — Data Analyst portfolio. SQL, Python, Power BI, and DAX, applied to real retail and business-operations data.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Vikash Verma — aspiring Business Analyst portfolio featuring requirements analysis, process mapping, SQL, KPI analytics, UAT, and service desk analytics.">
+<meta name="theme-color" content="#f7f8fa">
+<title>Vikash Verma | Aspiring Business Analyst</title>
 <style>
-  :root{
-    --canvas:#0A0C11;
-    --surface:#161922;
-    --surface-2:#0E1015;
-    --ink:#EDEEF3;
-    --slate:#9BA3B2;
-    --slate-soft:#6C7484;
-    --line:#272C38;
-    --signal:#5B8CFF;
-    --signal-dim:rgba(91,140,255,.16);
-    --amber:#E8B15D;
-    --amber-dim:rgba(232,177,93,.16);
-    --good:#34C48A;
-    --good-dim:rgba(52,196,138,.18);
-    --radius-lg:18px;
-    --radius-md:12px;
-    --radius-sm:8px;
-    --shadow-card:0 1px 0 rgba(255,255,255,.03) inset, 0 16px 36px -18px rgba(0,0,0,.7);
-    --shadow-card-hover:0 1px 0 rgba(255,255,255,.05) inset, 0 22px 48px -18px rgba(0,0,0,.8);
-    --maxw:1120px;
-  }
-  *{ box-sizing:border-box; }
-  html{ scroll-behavior:smooth; }
-  body{
-    margin:0;
-    background:var(--canvas);
-    color:var(--ink);
-    font-family:'IBM Plex Sans', sans-serif;
-    font-size:16px;
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-  }
-  ::selection{ background:var(--signal); color:#fff; }
-  a{ color:inherit; }
-  h1,h2,h3{ font-family:'Space Grotesk', sans-serif; font-weight:600; margin:0; letter-spacing:-0.01em; }
-  .mono{ font-family:'IBM Plex Mono', monospace; }
-  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 28px; }
-  a:focus-visible, button:focus-visible{ outline:2px solid var(--signal); outline-offset:3px; border-radius:4px; }
-
-  .eyebrow{
-    font-family:'IBM Plex Mono', monospace; font-size:12px; font-weight:500; letter-spacing:.12em; text-transform:uppercase;
-    color:var(--signal); display:flex; align-items:center; gap:10px; margin:0;
-  }
-  .eyebrow::before{ content:""; width:20px; height:2px; background:var(--amber); border-radius:2px; }
-
-  section{ padding:88px 0; }
-  .section-top{ margin-bottom:36px; }
-  .section-top h2{ font-size:clamp(28px,3.4vw,34px); margin-top:12px; }
-  .section-top p{ color:var(--slate); font-size:15px; max-width:46ch; margin-top:10px; }
-
-  /* ---------- NAV ---------- */
-  header.nav{ position:fixed; top:0; left:0; right:0; z-index:60; background:rgba(10,12,17,.86); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
-  .nav-inner{ max-width:var(--maxw); margin:0 auto; padding:16px 28px; display:flex; align-items:center; justify-content:space-between; }
-  .nav-mark{ font-family:'Space Grotesk', sans-serif; font-size:16px; font-weight:600; text-decoration:none; color:var(--ink); }
-  .nav-mark span{ color:var(--signal); }
-  .nav-links{ display:flex; gap:22px; list-style:none; margin:0; padding:0; }
-  .nav-links a{ font-family:'IBM Plex Sans', sans-serif; font-size:13.5px; font-weight:500; text-decoration:none; color:var(--slate); padding-bottom:4px; border-bottom:2px solid transparent; transition:color .2s ease, border-color .2s ease; }
-  .nav-links a:hover{ color:var(--ink); }
-  .nav-links a.active{ color:var(--ink); border-color:var(--signal); }
-  .nav-toggle{ display:none; background:var(--surface); border:1px solid var(--line); color:var(--ink); padding:8px 12px; border-radius:var(--radius-sm); font-family:'IBM Plex Sans',sans-serif; font-size:13px; font-weight:500; }
-
-  /* ---------- BUTTONS ---------- */
-  .btn{ font-family:'IBM Plex Sans', sans-serif; font-weight:600; font-size:14.5px; text-decoration:none; padding:13px 22px; border-radius:var(--radius-sm); border:1px solid var(--signal); background:var(--signal); color:#fff; display:inline-flex; align-items:center; gap:8px; transition:transform .15s ease, box-shadow .2s ease; }
-  .btn:hover{ transform:translateY(-2px); box-shadow:0 12px 24px -10px rgba(91,140,255,.5); }
-  .btn.ghost{ background:transparent; color:var(--ink); border-color:var(--line); }
-  .btn.ghost:hover{ border-color:var(--ink); box-shadow:none; }
-
-  /* ---------- HERO ---------- */
-  .hero{ padding:158px 0 80px; position:relative; overflow:hidden; }
-  .hero::before{ content:""; position:absolute; top:-140px; right:-120px; width:520px; height:520px; border-radius:50%; background:radial-gradient(circle at center, var(--signal-dim), transparent 70%); z-index:0; pointer-events:none; }
-  .hero::after{ content:""; position:absolute; bottom:-160px; left:-100px; width:420px; height:420px; border-radius:50%; background:radial-gradient(circle at center, var(--amber-dim), transparent 70%); z-index:0; pointer-events:none; }
-  .hero-grid{ position:relative; z-index:1; display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center; }
-  .hero h1{ font-size:clamp(38px,5vw,58px); line-height:1.08; margin-top:16px; font-weight:700; }
-  .hero h1 em{ font-style:normal; color:var(--signal); }
-  .hero .lede{ max-width:48ch; color:var(--slate); font-size:17px; margin-top:20px; }
-  .hero-actions{ display:flex; gap:14px; margin-top:32px; flex-wrap:wrap; }
-
-  /* ---------- KPI PANEL — signature element ---------- */
-  @property --pct{ syntax:'<percentage>'; inherits:true; initial-value:0%; }
-  .kpi-card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); box-shadow:var(--shadow-card); padding:26px 26px 22px; }
-  .kpi-card-head{ display:flex; align-items:center; gap:10px; padding-bottom:16px; border-bottom:1px solid var(--line); margin-bottom:18px; }
-  .kpi-dot{ width:8px; height:8px; border-radius:50%; background:var(--good); box-shadow:0 0 0 4px var(--good-dim); flex:none; }
-  .kpi-title{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; }
-  .kpi-live{ margin-left:auto; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.1em; color:var(--good); }
-  @media (prefers-reduced-motion: no-preference){ .kpi-dot{ animation:pulse 2.2s ease-in-out infinite; } }
-  @keyframes pulse{ 0%,100%{ opacity:1; } 50%{ opacity:.35; } }
-
-  .kpi-tabs{ display:flex; gap:6px; background:var(--surface-2); padding:4px; border-radius:999px; margin-bottom:22px; }
-  .kpi-tab{ flex:1; border:none; background:transparent; padding:9px 8px; border-radius:999px; font-family:'IBM Plex Sans',sans-serif; font-size:12px; font-weight:500; color:var(--slate); cursor:pointer; transition:background .2s ease, color .2s ease; }
-  .kpi-tab.active{ background:var(--surface); color:var(--ink); box-shadow:var(--shadow-card); }
-
-  .kpi-views{ position:relative; display:grid; }
-  .kpi-view{ grid-area:1/1; opacity:0; visibility:hidden; pointer-events:none; transition:opacity .25s ease; }
-  .kpi-view.active{ opacity:1; visibility:visible; pointer-events:auto; }
-
-  .kpi-headline{ display:flex; align-items:baseline; gap:10px; }
-  .kpi-num-big{ font-family:'Space Grotesk',sans-serif; font-size:44px; font-weight:600; }
-  .kpi-unit{ font-family:'IBM Plex Mono',monospace; color:var(--slate); font-size:14px; }
-  .kpi-delta{ margin-left:auto; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--good); background:var(--good-dim); padding:4px 9px; border-radius:999px; }
-
-  .kpi-compare{ margin-top:18px; display:flex; flex-direction:column; gap:12px; }
-  .kpi-compare-row{ display:grid; grid-template-columns:96px 1fr 60px; align-items:center; gap:10px; }
-  .kpi-compare-label{ font-size:12.5px; color:var(--slate); }
-  .kpi-track{ height:8px; background:var(--surface-2); border-radius:999px; overflow:hidden; }
-  .kpi-fill{ height:100%; width:0%; border-radius:999px; transition:width 1s cubic-bezier(.2,.8,.2,1); background:var(--slate-soft); }
-  .kpi-fill.accent{ background:var(--signal); }
-  .kpi-compare-val{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink); text-align:right; }
-
-  .kpi-radial-wrap{ display:flex; align-items:center; gap:22px; }
-  .kpi-radial{ --pct:0%; width:112px; height:112px; border-radius:50%; flex:none; display:grid; place-items:center; background:conic-gradient(var(--amber) var(--pct), var(--surface-2) 0); transition:--pct 1.1s cubic-bezier(.2,.8,.2,1); }
-  .kpi-radial-hole{ width:82px; height:82px; border-radius:50%; background:var(--surface); display:grid; place-items:center; font-family:'Space Grotesk',sans-serif; font-size:20px; font-weight:600; }
-  .kpi-radial-legend p{ margin:0; font-size:13px; color:var(--slate); line-height:1.5; }
-  .kpi-radial-legend .kpi-headline-sm{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; color:var(--ink); margin-bottom:6px; }
-
-  .kpi-trio{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
-  .kpi-trio div{ background:var(--surface-2); border-radius:var(--radius-md); padding:14px 10px; text-align:center; }
-  .kpi-trio strong{ display:block; font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:600; }
-  .kpi-trio small{ display:block; margin-top:4px; font-size:11px; color:var(--slate); }
-
-  .kpi-caption{ margin-top:16px; font-size:13px; color:var(--slate); line-height:1.55; }
-
-  /* ---------- STATS BAND ---------- */
-  .stats-band{ padding:52px 0; background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-  .stats-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
-  .stat-num{ display:block; font-family:'Space Grotesk',sans-serif; font-size:clamp(28px,3vw,36px); font-weight:600; color:var(--ink); }
-  .stat-label{ display:block; margin-top:4px; font-size:13px; color:var(--slate); }
-
-  /* ---------- ABOUT ---------- */
-  .about-layout{ display:grid; grid-template-columns:1.2fr .8fr; gap:52px; }
-  .about-copy p{ color:var(--slate); font-size:16px; max-width:58ch; }
-  .about-copy p + p{ margin-top:16px; }
-  .about-copy strong{ color:var(--ink); font-weight:600; }
-  .about-pillars{ display:flex; flex-direction:column; gap:16px; }
-  .pillar{ display:flex; gap:14px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-md); padding:18px; box-shadow:var(--shadow-card); }
-  .pillar-mark{ flex:none; width:34px; height:34px; border-radius:var(--radius-sm); background:var(--signal-dim); color:var(--signal); display:grid; place-items:center; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:12px; }
-  .pillar strong{ font-size:14.5px; display:block; margin-bottom:4px; }
-  .pillar p{ margin:0; font-size:13.5px; color:var(--slate); line-height:1.5; }
-
-  /* ---------- SKILLS ---------- */
-  .skills-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
-  .skill-card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-md); padding:22px 20px; box-shadow:var(--shadow-card); transition:box-shadow .2s ease, transform .2s ease; }
-  .skill-card:hover{ box-shadow:var(--shadow-card-hover); transform:translateY(-3px); }
-  .skill-card .cat{ font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--amber); display:block; margin-bottom:12px; }
-  .skill-card ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:6px; }
-  .skill-card li{ font-size:14px; color:var(--ink); }
-
-  /* ---------- EXPERIENCE ---------- */
-  .exp-card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); box-shadow:var(--shadow-card); padding:30px 32px; display:grid; grid-template-columns:.9fr 1.6fr; gap:36px; }
-  .exp-role{ font-size:19px; font-family:'Space Grotesk',sans-serif; font-weight:600; }
-  .exp-org{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--signal); margin-top:8px; }
-  .exp-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px; }
-  .exp-list li{ position:relative; padding-left:20px; font-size:14.5px; color:var(--slate); line-height:1.55; }
-  .exp-list li::before{ content:""; position:absolute; left:0; top:8px; width:7px; height:7px; border-radius:50%; background:var(--amber); }
-
-  /* ---------- PROJECTS ---------- */
-  .projects{ display:flex; flex-direction:column; gap:16px; }
-  .proj-card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); box-shadow:var(--shadow-card); padding:26px 28px; transition:box-shadow .2s ease; }
-  .proj-card:hover{ box-shadow:var(--shadow-card-hover); }
-  .proj-top{ display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
-  .proj-idx{ font-size:12px; color:var(--slate-soft); }
-  .proj-tags{ display:flex; flex-wrap:wrap; gap:8px; }
-  .tag{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.03em; color:var(--signal); background:var(--signal-dim); padding:4px 10px; border-radius:999px; }
-  .proj-card h3{ font-size:21px; margin-top:14px; }
-  .proj-desc{ color:var(--slate); font-size:14.5px; margin-top:8px; max-width:66ch; }
-  .proj-detail{ max-height:0; overflow:hidden; transition:max-height .4s ease; }
-  .proj-detail.open{ max-height:420px; }
-  .proj-detail ul{ list-style:none; margin:14px 0 0; padding:14px 0 0; border-top:1px solid var(--line); display:flex; flex-direction:column; gap:10px; }
-  .proj-detail li{ position:relative; padding-left:18px; font-size:13.5px; color:var(--slate); line-height:1.55; }
-  .proj-detail li::before{ content:""; position:absolute; left:0; top:7px; width:6px; height:6px; border-radius:50%; background:var(--signal); }
-  .proj-foot{ display:flex; align-items:center; justify-content:space-between; margin-top:16px; }
-  .proj-toggle{ background:none; border:none; padding:0; font-family:'IBM Plex Sans',sans-serif; font-size:13px; font-weight:600; color:var(--signal); cursor:pointer; }
-  .proj-foot > a{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; text-decoration:none; color:var(--ink); border-bottom:1px solid var(--line); padding-bottom:2px; }
-  .proj-foot > a:hover{ border-color:var(--ink); }
-
-  /* ---------- CERTIFICATIONS ---------- */
-  .certs{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-  .cert-card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-md); box-shadow:var(--shadow-card); padding:22px; display:flex; flex-direction:column; gap:10px; }
-  .cert-org{ font-size:16px; font-weight:600; font-family:'Space Grotesk',sans-serif; }
-  .cert-note{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--amber); }
-  .cert-card p{ margin:0; font-size:13.5px; color:var(--slate); line-height:1.5; }
-  .cert-id{ margin-top:auto; padding-top:10px; border-top:1px solid var(--line); font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--slate-soft); }
-
-  /* ---------- EDUCATION ---------- */
-  .timeline{ position:relative; padding-left:28px; display:flex; flex-direction:column; gap:30px; }
-  .timeline::before{ content:""; position:absolute; left:5px; top:6px; bottom:6px; width:1px; background:var(--line); }
-  .tl-item{ position:relative; }
-  .tl-item::before{ content:""; position:absolute; left:-28px; top:5px; width:11px; height:11px; border-radius:50%; background:var(--surface); border:2px solid var(--signal); }
-  .tl-item .role{ font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:600; }
-  .tl-item .org{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--slate); margin-top:5px; }
-  .tl-item .desc{ font-size:13px; color:var(--slate-soft); margin-top:4px; }
-
-  /* ---------- FOOTER ---------- */
-  footer{ background:var(--surface-2); color:var(--ink); padding:76px 0 40px; margin-top:20px; border-top:1px solid var(--line); }
-  footer .eyebrow{ color:var(--amber); }
-  footer .eyebrow::before{ background:var(--signal); }
-  footer h2{ font-size:clamp(30px,4vw,40px); color:#fff; margin-top:14px; max-width:16ch; }
-  footer .lede{ color:#A6ADBB; max-width:44ch; margin-top:12px; font-size:15px; }
-  .contact-cards{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:40px; }
-  .contact-card{ display:flex; flex-direction:column; gap:10px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius-md); padding:18px 16px; text-decoration:none; color:#EDEEF3; transition:background .2s ease, border-color .2s ease, transform .2s ease; }
-  .contact-card:hover{ background:rgba(255,255,255,.07); border-color:rgba(255,255,255,.2); transform:translateY(-3px); }
-  .cc-icon{ width:34px; height:34px; border-radius:var(--radius-sm); background:rgba(255,255,255,.08); display:grid; place-items:center; color:#A8C0FF; }
-  .cc-icon svg{ width:17px; height:17px; }
-  .cc-badge{ width:34px; height:34px; border-radius:var(--radius-sm); background:rgba(255,255,255,.08); display:grid; place-items:center; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600; color:#fff; }
-  .cc-label{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:#8790A0; }
-  .cc-value{ font-size:13.5px; font-weight:500; word-break:break-word; }
-  .foot-note{ margin-top:56px; padding-top:24px; border-top:1px solid rgba(255,255,255,.1); display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:#6D7585; }
-
-  /* ---------- REVEAL ---------- */
-  .reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
-  .reveal.in{ opacity:1; transform:none; }
-  @media (prefers-reduced-motion: reduce){
-    .reveal{ opacity:1; transform:none; transition:none; }
-    html{ scroll-behavior:auto; }
-    .kpi-fill, .kpi-radial{ transition:none; }
-  }
-
-  /* ---------- RESPONSIVE ---------- */
-  @media (max-width: 980px){
-    .hero-grid{ grid-template-columns:1fr; }
-    .about-layout{ grid-template-columns:1fr; }
-    .exp-card{ grid-template-columns:1fr; gap:20px; }
-    .stats-grid{ grid-template-columns:repeat(2,1fr); }
-    .skills-grid{ grid-template-columns:repeat(2,1fr); }
-    .certs{ grid-template-columns:1fr; }
-    .contact-cards{ grid-template-columns:repeat(2,1fr); }
-  }
-  @media (max-width: 720px){
-    .nav-links{ display:none; }
-    .nav-links.open{ display:flex; position:absolute; top:56px; right:20px; left:20px; flex-direction:column; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-md); padding:16px 18px; box-shadow:var(--shadow-card); gap:14px; z-index:70; }
-    .nav-toggle{ display:block; }
-    section{ padding:64px 0; }
-    .hero{ padding-top:118px; }
-    .kpi-compare-row{ grid-template-columns:70px 1fr 50px; }
-    .skills-grid{ grid-template-columns:1fr; }
-    .contact-cards{ grid-template-columns:1fr; }
-  }
+:root{--ink:#172033;--muted:#5b667a;--line:#dfe5ed;--paper:#f7f8fa;--card:#fff;--blue:#2155cd;--blue2:#eaf0ff;--teal:#147d78;--max:1120px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:var(--blue);text-underline-offset:3px}a:hover{text-decoration-thickness:2px}.skip{position:absolute;left:-999px;top:0;background:white;padding:12px;z-index:99}.skip:focus{left:12px;top:12px}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}.topbar{position:sticky;top:0;z-index:20;background:rgba(247,248,250,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:22px}.brand{font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:-.04em;font-size:1.1rem}.brand span{color:var(--blue)}.navlinks{display:flex;align-items:center;gap:22px}.navlinks a{color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:650}.navlinks a:hover,.navlinks a:focus{color:var(--blue)}.menu{display:none;border:1px solid var(--line);background:white;border-radius:9px;padding:9px 12px;font:inherit;font-weight:700}.hero{padding:88px 0 64px;background:radial-gradient(ellipse at 90% 0%,#e5ecff 0,transparent 38%)}.eyebrow{color:var(--blue);text-transform:uppercase;letter-spacing:.13em;font-size:.76rem;font-weight:800}.hero-grid{display:grid;grid-template-columns:1.45fr .75fr;gap:52px;align-items:center}.hero h1{font-size:clamp(2.7rem,6vw,4.8rem);letter-spacing:-.065em;line-height:1.02;margin:14px 0 20px;max-width:760px}.hero h1 em{font-style:normal;color:var(--blue)}.lead{font-size:1.12rem;color:var(--muted);max-width:680px;margin:0 0 26px}.actions{display:flex;flex-wrap:wrap;gap:12px}.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:10px;padding:12px 17px;font-weight:750;text-decoration:none;border:1px solid var(--line);background:#fff;color:var(--ink)}.btn.primary{background:var(--blue);color:white;border-color:var(--blue)}.btn:hover{transform:translateY(-1px)}.hero-note{background:white;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 18px 50px #18284a0b}.hero-note .initials{width:100%;max-width:100%;padding:14px 18px;border-radius:14px;background:var(--blue2);color:var(--blue);display:block;text-align:center;white-space:nowrap;font-size:clamp(1.35rem,2.2vw,1.9rem);line-height:1.2;letter-spacing:-.01em;font-weight:850;margin-bottom:16px}.hero-note h2{font-size:1.05rem;margin:0 0 8px}.hero-note p{font-size:.94rem;color:var(--muted);margin:0}.tagrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.tag{font-size:.78rem;padding:5px 9px;border:1px solid var(--line);border-radius:7px;background:white;color:#39445a;font-weight:650}.proofbar{border-block:1px solid var(--line);background:#fff}.proofgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}.proof{padding:20px 18px;border-right:1px solid var(--line)}.proof:last-child{border:0}.proof strong{display:block;font-size:1.08rem}.proof span{display:block;color:var(--muted);font-size:.83rem}.section{padding:76px 0}.section.alt{background:#fff;border-block:1px solid var(--line)}.section-head{max-width:720px;margin-bottom:30px}.section h2{font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.045em;line-height:1.15;margin:8px 0 12px}.section-head p,.muted{color:var(--muted)}.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:32px}.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:24px}.panel h3{margin:0 0 10px;font-size:1.05rem}.panel p{margin:0;color:var(--muted)}.project{background:white;border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:22px 0 0}.project-top{padding:26px 28px;background:linear-gradient(120deg,#f0f4ff,#fff 75%);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;align-items:flex-start}.project-number{font-size:.8rem;color:var(--blue);font-weight:850;letter-spacing:.12em}.project h3{font-size:1.45rem;line-height:1.2;letter-spacing:-.035em;margin:6px 0 8px}.project-top p{margin:0;color:var(--muted);max-width:720px}.project-body{padding:26px 28px}.project-body h4{font-size:.96rem;margin:0 0 7px}.project-body p{margin:0;color:var(--muted)}.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.case-block{padding-bottom:18px}.case-block ul{padding-left:20px;margin:6px 0 0;color:var(--muted)}.case-block li{margin:5px 0}.insights{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}.insight{border:1px solid var(--line);border-radius:12px;padding:15px;background:#fbfcff}.insight strong{display:block;font-size:1.35rem;letter-spacing:-.03em;color:var(--blue)}.insight span{display:block;color:var(--muted);font-size:.8rem;line-height:1.4}.note{font-size:.83rem!important;border-left:3px solid #c4d3ff;padding:9px 12px;background:#f7f9ff;color:#46536a!important}.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.skill-card{padding:22px;background:#fff;border:1px solid var(--line);border-radius:14px}.skill-card h3{margin:0 0 10px;font-size:1rem}.skill-card p{margin:0;color:var(--muted);font-size:.92rem}.education{display:grid;grid-template-columns:1fr 1fr;gap:16px}.edu{padding:20px;border:1px solid var(--line);border-radius:13px;background:white}.edu h3{margin:0 0 5px;font-size:1rem}.edu p{margin:0;color:var(--muted);font-size:.92rem}.cert-list{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.cert{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px}.cert strong{display:block}.cert span{font-size:.88rem;color:var(--muted)}.contactbox{background:#172033;color:#fff;border-radius:18px;padding:34px;display:flex;justify-content:space-between;gap:28px;align-items:center}.contactbox p{color:#c4ccda;margin:8px 0 0}.contactlinks{display:flex;gap:10px;flex-wrap:wrap}.contactlinks a{color:white;border:1px solid #4b566a;padding:9px 12px;border-radius:8px;text-decoration:none;font-weight:650}.contactlinks a:hover{background:#26334b}.footer{padding:24px 0;color:var(--muted);font-size:.85rem}.small{font-size:.86rem;color:var(--muted)}.project-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.project-links a{font-weight:750}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:800px){.hero-grid,.about-grid{grid-template-columns:1fr}.hero{padding-top:58px}.hero-note{max-width:520px}.proofgrid{grid-template-columns:1fr 1fr}.proof:nth-child(2){border-right:0}.proof:nth-child(-n+2){border-bottom:1px solid var(--line)}.skills-grid{grid-template-columns:1fr 1fr}.cert-list{grid-template-columns:1fr}.contactbox{align-items:flex-start;flex-direction:column}.case-grid{grid-template-columns:1fr}}
+@media(max-width:680px){.wrap{width:min(100% - 28px,var(--max))}.nav{min-height:64px;flex-wrap:wrap;padding:10px 0}.menu{display:block}.navlinks{display:none;width:100%;padding:4px 0 10px;flex-direction:column;align-items:flex-start;gap:0}.navlinks.open{display:flex}.navlinks a{padding:10px 2px;width:100%}.hero h1{font-size:clamp(2.5rem,12vw,3.6rem)}.section{padding:56px 0}.project-top,.project-body{padding:21px 18px}.insights{grid-template-columns:1fr 1fr}.insight:last-child{grid-column:1/-1}.skills-grid,.education{grid-template-columns:1fr}.contactbox{padding:25px}.proof{padding:16px 12px}.proof strong{font-size:1rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar"><div class="wrap nav">
+<a class="brand" href="#home">Vikash<span>.</span></a>
+<button class="menu" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+<nav class="navlinks" id="navlinks" aria-label="Main navigation">
+<a href="#about">About</a><a href="#projects">Projects</a><a href="#another-analytics-projects">More analytics</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a>
+<a href="resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
+</nav></div></header>
+<main id="main">
+<section class="hero" id="home"><div class="wrap hero-grid"><div>
+<div class="eyebrow">Aspiring Business Analyst · New Delhi, India</div>
+<h1>Turning business questions into <em>clear decisions.</em></h1>
+<p class="lead">I’m Vikash Verma, an aspiring Business Analyst who connects requirements, process improvement, and data analysis. I use structured documentation, SQL, Excel, and dashboards to make operational problems easier to understand and act on.</p>
+<div class="actions"><a class="btn primary" href="#projects">Explore case studies ↓</a><a class="btn" href="resume.pdf" target="_blank" rel="noopener">View resume ↗</a><a class="btn" href="#contact">Contact me</a></div>
+<div class="tagrow" aria-label="Core strengths"><span class="tag">Requirements & user stories</span><span class="tag">SQL & KPI analysis</span><span class="tag">Process mapping</span><span class="tag">UAT & traceability</span></div>
+</div><aside class="hero-note"><div class="initials">Vikash Verma</div><h2>What I bring to a BA team</h2><p>A structured approach: define the problem, translate it into requirements, examine evidence, communicate trade-offs, and make outcomes testable.</p><div class="tagrow"><span class="tag">BRD</span><span class="tag">Acceptance criteria</span><span class="tag">Power BI</span><span class="tag">MySQL / SQLite</span></div></aside></div></section>
+<div class="proofbar"><div class="wrap proofgrid"><div class="proof"><strong>6+ portfolio projects</strong><span>Business analysis + analytics</span></div><div class="proof"><strong>17 user stories</strong><span>OMS requirements and backlog</span></div><div class="proof"><strong>25 UAT cases</strong><span>Illustrative test documentation</span></div><div class="proof"><strong>SQL + BI</strong><span>Operational KPIs and dashboards</span></div></div></div>
+<section class="section" id="about"><div class="wrap"><div class="section-head"><div class="eyebrow">About me</div><h2>Analytical thinking, grounded in business context.</h2><p>I’m building my career in business analysis by combining structured problem-solving with hands-on project work. My projects show how I turn operational pain points into requirements, map current and future processes, define measurable KPIs, and use data to prioritize improvement opportunities.</p></div><div class="about-grid"><div class="panel"><h3>How I approach a problem</h3><p>Clarify the stakeholder problem and scope → document requirements and assumptions → map workflows and identify bottlenecks → analyze data and define KPIs → validate requirements with test cases and traceability → communicate findings and practical next steps.</p></div><div class="panel"><h3>Role focus</h3><p>Entry-Level Business Analyst · Junior Business Analyst · Business Analyst Intern. Interested in requirements analysis, business process improvement, operations analytics, reporting, and UAT.</p></div></div></div></section>
+<section class="section alt" id="projects"><div class="wrap"><div class="section-head"><div class="eyebrow">Featured projects</div><h2>Case studies: from problem to actionable insight.</h2><p>Both projects use synthetic data from Kaggle and are portfolio simulations, not claims of production deployment or real-company impact. The work demonstrates methods and artifacts relevant to an entry-level Business Analyst.</p></div>
+<article class="project"><div class="project-top"><div><div class="project-number">CASE STUDY 01 · REQUIREMENTS + OPERATIONS ANALYTICS</div><h3>E-commerce Order Management System (OMS)</h3><p>Investigating delivery delays, payment failures, stock mismatches, cancellations, refunds, and support demand—and defining the requirements and measures for a better order-management process.</p><div class="tagrow"><span class="tag">BRD</span><span class="tag">As-Is / To-Be</span><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">User stories</span><span class="tag">UAT / RTM</span></div></div></div>
+<div class="project-body"><div class="case-grid">
+<div class="case-block"><h4>Business problem and context</h4><p>A hypothetical e-commerce business faces fragmented order handling and limited visibility into fulfilment, payments, inventory, refunds, and customer support. The project frames an OMS improvement initiative and identifies where operational friction appears.</p></div>
+<div class="case-block"><h4>Objective and key questions</h4><ul><li>Where do late deliveries and dispatch delays cluster?</li><li>Which payment methods fail most often?</li><li>Where do checkout sessions drop off?</li><li>Which categories show higher returns or inventory mismatches?</li><li>What requirements and KPIs would help teams monitor improvements?</li></ul></div>
+<div class="case-block"><h4>Data and tools</h4><p>Ten synthetic CSV tables covering orders, items, payments, shipments, returns, support tickets, inventory audits, customers, products, and funnel events. SQLite SQL analysis, Power BI dashboard specification/report, Excel tracker, Word BRD, process diagrams, and UAT/traceability artifacts.</p></div>
+<div class="case-block"><h4>Approach and methodology</h4><ul><li>Mapped current and proposed order workflows.</li><li>Documented stakeholders, scope, assumptions, risks, 17 functional and 10 non-functional requirements.</li><li>Created 17 user stories with acceptance criteria, a prioritized backlog, and a four-sprint plan.</li><li>Queried operational KPIs and designed a four-page Power BI view.</li><li>Prepared 25 UAT cases and a requirements traceability matrix; 21 pass and 4 fail in the illustrative test run.</li></ul></div>
+</div>
+<h4>Key findings from the synthetic dataset</h4><div class="insights">
+<div class="insight"><strong>24.8%</strong><span>Delivered orders arrived after the promised date (5,296 delivered orders; 1,315 delayed).</span></div>
+<div class="insight"><strong>11.3%</strong><span>Net Banking payment-attempt failure rate, versus 4.7% for UPI.</span></div>
+<div class="insight"><strong>16.7%</strong><span>Fashion return rate, the highest category rate in the analysis.</span></div>
+<div class="insight"><strong>55.2%</strong><span>Support tickets categorized as delayed-order issues; order-status inquiries add another 21.2%.</span></div>
+<div class="insight"><strong>₹9.5 lakh</strong><span>Value associated with 137 pending refunds in the synthetic data.</span></div>
+<div class="insight"><strong>18.4%</strong><span>Of product-view sessions ended in an order in the analyzed funnel.</span></div>
+</div>
+<div class="case-grid" style="margin-top:22px">
+<div class="case-block"><h4>Business recommendations</h4><ul><li>Review dispatch handoffs and compare carrier/warehouse performance against a consistent SLA definition.</li><li>Investigate Net Banking failures by reason and assess clearer recovery/retry messaging.</li><li>Analyze Fashion return reasons and product-level patterns before changing assortment or product information.</li><li>Prioritize delay-related support drivers and expose order status proactively.</li><li>Monitor pending-refund age/value and inventory discrepancies through exception-focused KPIs.</li></ul></div>
+<div class="case-block"><h4>Expected business value and evidence</h4><p>The intended value is better prioritization, more transparent operational monitoring, and testable system requirements. No post-implementation impact was measured. The project includes a BRD, SQL schema/queries/results, process diagrams, tracker, dashboard assets/specification, UAT cases, and RTM.</p><div class="project-links"><a href="https://github.com/iamvikash28/E-commerce-OMS-Business-Analyst-Project" target="_blank" rel="noopener">Find project files on GitHub ↗</a></div></div>
+</div></div></article>
+<article class="project"><div class="project-top"><div><div class="project-number">CASE STUDY 02 · SERVICE OPERATIONS + SLA ANALYTICS</div><h3>IT Service Desk Transformation & SLA Analytics</h3><p>A service-desk workflow and analytics project to make ticket demand, resolution, SLA risk, backlog ageing, and category suggestions easier to review.</p><div class="tagrow"><span class="tag">Business case / BRD</span><span class="tag">MySQL 8</span><span class="tag">SQL analytics</span><span class="tag">Flask prototype</span><span class="tag">Power BI guide</span><span class="tag">Classifier POC</span></div></div></div>
+<div class="project-body"><div class="case-grid">
+<div class="case-block"><h4>Business problem and context</h4><p>IT support teams need consistent visibility into incoming tickets, open backlog, ageing, SLA compliance, resolution times, reopened tickets, and team workload. Manual triage can also create inconsistent categorization. This project simulates a small service desk using synthetic tickets.</p></div>
+<div class="case-block"><h4>Objective and key questions</h4><ul><li>How much ticket demand and unresolved backlog exists?</li><li>How do resolution times vary by category?</li><li>Which resolved tickets met the defined SLA, and which open tickets are overdue?</li><li>Where is backlog ageing concentrated?</li><li>Can ticket text suggest a category to assist—not replace—human triage?</li></ul></div>
+<div class="case-block"><h4>Data and tools</h4><p>MySQL 8 schema and analytical queries, synthetic ticket generation (5,000-ticket setup), Python, Flask prototype, TF-IDF + Logistic Regression classifier, test suite, and Power BI build guide.</p></div>
+<div class="case-block"><h4>Approach and methodology</h4><ul><li>Defined illustrative priority-based calendar-hour SLAs: Critical 4h, High 8h, Medium 24h, Low 72h.</li><li>Designed SQL checks for ticket volume, average/median resolution time, SLA compliance, open overdue tickets, ageing, reopen rate, workload, and data quality.</li><li>Built a prototype to review tickets, create tickets, update status, and preview category suggestions.</li><li>Evaluated a text classifier on a held-out synthetic test split and documented the limitation.</li></ul></div>
+</div>
+<h4>What the project demonstrates</h4><div class="insights">
+<div class="insight"><strong>7 categories</strong><span>Ticket classes covered by the text-classification proof of concept.</span></div>
+<div class="insight"><strong>SQL KPI set</strong><span>Volume, resolution, SLA, backlog ageing, reopen rate, workload, and data-quality checks.</span></div>
+<div class="insight"><strong>Human review</strong><span>Category suggestions are advisory; staff should validate before assignment.</span></div>
+</div>
+<div class="case-grid" style="margin-top:22px">
+<div class="case-block"><h4>Business recommendations</h4><ul><li>Use a shared SLA definition and report resolved-ticket compliance separately from open overdue tickets.</li><li>Review ageing and priority together to identify escalation candidates.</li><li>Use category and team workload views to guide triage and capacity discussions.</li><li>Keep a human-in-the-loop review for suggested categories and monitor errors by class.</li><li>Validate KPI definitions and classifier performance with real, appropriately governed data before adoption.</li></ul></div>
+<div class="case-block"><h4>Expected business value and evidence</h4><p>The prototype and queries could support more consistent triage and operational reviews, but no real-world time saving or SLA improvement has been measured. Deliverables include SQL schema/analytics, application code, data-quality checks, classifier evaluation, documentation, and tests.</p><div class="project-links"><a href="https://github.com/iamvikash28/IT-Service-Desk-Transformation-SLA-Analytics" target="_blank" rel="noopener">Find project files on GitHub ↗</a></div></div>
+</div></div></article>
+</div></section>
 
-<header class="nav">
-  <div class="nav-inner">
-    <a href="#top" class="nav-mark">Vikash<span>.</span>Verma</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="resume.pdf" download>Resume ↓</a></li>
-    </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">Menu</button>
-  </div>
-</header>
 
-<main id="top">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <p class="eyebrow">Data Analyst · New Delhi, India</p>
-        <h1>From ledgers<br>to <em>live dashboards.</em></h1>
-        <p class="lede">Three years of tracking sales and inventory by hand taught me what to look for. SQL, Power BI, and Python now do the counting — so the insight shows up faster, and holds up when someone asks why.</p>
-        <div class="hero-actions">
-          <a href="#projects" class="btn">View projects →</a>
-          <a href="resume.pdf" class="btn ghost" download>Download resume ↓</a>
-          <a href="#contact" class="btn ghost">Get in touch</a>
-        </div>
-      </div>
+<section class="section alt" id="another-analytics-projects"><div class="wrap"><div class="section-head"><div class="eyebrow">Additional portfolio work</div><h2>Another Analytics Projects</h2><p>Additional projects demonstrating sales and retail analytics, customer analytics, machine learning, and AI-assisted data querying. These are portfolio projects built with sample and synthetic data from Kaggle.</p></div>
+<article class="project"><div class="project-top"><div><div class="project-number">ANALYTICS PROJECT 01 · SALES PERFORMANCE + CUSTOMER ANALYTICS</div><h3>Jewellery Sales Analysis — FY 2024</h3><p>Analyzing a jewellery retailer’s 2024 sales across gold, silver, and diamond products to understand category contribution, product performance, customer mix, payment methods, and city-level revenue.</p><div class="tagrow"><span class="tag">Excel</span><span class="tag">Power BI</span><span class="tag">Sales KPIs</span><span class="tag">Product analysis</span><span class="tag">Customer segmentation</span></div></div></div>
+<div class="project-body"><div class="case-grid">
+<div class="case-block"><h4>Business problem and context</h4><p>A jewellery business needs a consolidated view of sales performance across product categories, 22 products, customer types, payment methods, and 10 cities. The report is designed to help stakeholders identify revenue concentration and areas for further commercial investigation.</p></div>
+<div class="case-block"><h4>Objective and key questions</h4><ul><li>Which jewellery categories and products contribute most revenue?</li><li>How does revenue vary by month and city?</li><li>What is the mix of new, returning, and premium customers?</li><li>Which payment methods are most frequently used?</li><li>Where should managers investigate assortment and local sales opportunities?</li></ul></div>
+<div class="case-block"><h4>Data and tools</h4><p>650 synthetic sales transactions dated in FY 2024, covering category, product, metal purity, quantity, unit price, revenue, customer type, city, and payment method. Analysis workbook in Excel and a multi-page Power BI report.</p></div>
+<div class="case-block"><h4>Analytical approach</h4><ul><li>Summarized revenue and order count, and calculated average transaction value.</li><li>Compared revenue by category, month, product, customer type, payment method, and city.</li><li>Designed report pages for overall performance, product contribution, and customer/city patterns.</li><li>Used rankings and category shares to identify where follow-up analysis may have the greatest value.</li></ul></div>
+</div>
+<h4>Key findings from the dataset</h4><div class="insights">
+<div class="insight"><strong>₹3.66 crore</strong><span>Total recorded revenue across 650 synthetic transactions.</span></div>
+<div class="insight"><strong>₹56,367</strong><span>Average revenue per transaction (total revenue divided by 650 rows).</span></div>
+<div class="insight"><strong>58.5%</strong><span>Revenue contribution from Diamond products.</span></div>
+<div class="insight"><strong>₹39.5 lakh</strong><span>Revenue from the top product, Diamond Pendant.</span></div>
+<div class="insight"><strong>₹48.1 lakh</strong><span>Highest city revenue in this dataset: Chennai.</span></div>
+<div class="insight"><strong>36.2%</strong><span>Returning customers as a share of transaction rows; this is not a unique-customer retention rate.</span></div>
+</div>
+<div class="case-grid" style="margin-top:22px">
+<div class="case-block"><h4>Business recommendations</h4><ul><li>Review Diamond assortment, stock availability, and margin data before increasing investment, because revenue contribution alone does not establish profitability.</li><li>Use monthly and city-level views to identify seasonal patterns and locations worth deeper investigation.</li><li>Compare returning-customer behaviour using customer-level measures such as repeat purchase frequency and time between orders.</li><li>Combine revenue with gross margin, inventory turnover, and discount data in a future version to support better commercial decisions.</li></ul></div>
+<div class="case-block"><h4>Expected value and project files</h4><p>The dashboard can help stakeholders scan sales mix and identify follow-up questions; no sales uplift or profit impact was measured. Supporting files include the dashboard PDF and Excel analysis workbook.</p><div class="project-links"><a href="https://github.com/iamvikash28/Jewellery_Sales_Analysis" target="_blank" rel="noopener">Find project files on GitHub ↗</a></div></div>
+</div></div></article>
+<article class="project"><div class="project-top"><div><div class="project-number">ANALYTICS PROJECT 02 · RETAIL SALES + PROFITABILITY ANALYTICS</div><h3>Retail Store Analytics — 2023–2024</h3><p>Analyzing 5,000 synthetic retail order records to compare revenue, profit, product/category mix, regional performance, customer segments, and discount levels.</p><div class="tagrow"><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">Profitability KPIs</span><span class="tag">Regional analysis</span></div></div></div>
+<div class="project-body"><div class="case-grid">
+<div class="case-block"><h4>Business problem and context</h4><p>Retail managers need to distinguish high-revenue products from profitable ones and understand how sales vary across categories, regions, periods, and customer segments. Discounting also needs to be considered alongside margin rather than revenue alone.</p></div>
+<div class="case-block"><h4>Objective and key questions</h4><ul><li>What are the overall revenue, profit, margin, and average order value?</li><li>Which categories and products contribute the most sales?</li><li>Which regions generate the greatest revenue?</li><li>How do reported margins vary across discount bands?</li><li>What should be monitored to avoid trading revenue growth for weaker profitability?</li></ul></div>
+<div class="case-block"><h4>Data and tools</h4><p>5,000 synthetic order rows from 2023–2024 with sales, cost, profit, margin, discount, product/category, region/state, and customer segment. SQL analysis scripts, Excel workbook, and an interactive Power BI-style dashboard/report.</p></div>
+<div class="case-block"><h4>Analytical approach</h4><ul><li>Calculated aggregate revenue, profit, weighted profit margin, and average transaction value.</li><li>Compared product/category revenue and profit, region performance, and monthly trends.</li><li>Grouped transactions into discount bands and compared revenue and average row-level margin.</li><li>Designed dashboard filters for year, region, category, segment, and quarter to support self-service exploration.</li></ul></div>
+</div>
+<h4>Key findings from the dataset</h4><div class="insights">
+<div class="insight"><strong>₹64.98 lakh</strong><span>Total revenue across 5,000 synthetic order rows.</span></div>
+<div class="insight"><strong>₹26.85 lakh</strong><span>Total recorded profit; aggregate profit divided by sales is about 41.3%.</span></div>
+<div class="insight"><strong>54.5%</strong><span>Electronics share of total revenue, the largest category contribution.</span></div>
+<div class="insight"><strong>₹1,300</strong><span>Average sales value per row, rounded.</span></div>
+<div class="insight"><strong>₹13.67 lakh</strong><span>South region revenue, the highest regional total in this dataset.</span></div>
+<div class="insight"><strong>56.96% → 40.79%</strong><span>Average row-level profit margin across the no-discount and 21%+ discount bands, respectively.</span></div>
+</div>
+<div class="case-grid" style="margin-top:22px">
+<div class="case-block"><h4>Business recommendations</h4><ul><li>Track both revenue and profit when reviewing top products and categories.</li><li>Review high-discount transactions and low-margin products before changing promotion policy.</li><li>Compare regional results with category mix and order volume before reallocating inventory or marketing spend.</li><li>Add time-series comparisons and validate seasonality before drawing conclusions from monthly changes.</li></ul></div>
+<div class="case-block"><h4>Expected value and project files</h4><p>The report provides a consistent starting point for sales and profitability reviews; no real-world commercial impact was measured. Supporting files include the dashboard PDF, SQL analysis, and dashboard HTML prototype.</p><div class="project-links"><a href="https://github.com/iamvikash28/Retail_Project" target="_blank" rel="noopener">Find project files on GitHub ↗</a></div></div>
+</div></div></article>
+<article class="project"><div class="project-top"><div><div class="project-number">ANALYTICS PROJECT 03 · CUSTOMER ANALYTICS + MACHINE LEARNING</div><h3>Customer Segmentation & RFM Analysis</h3><p>Combining customer, order, and website-engagement data to profile purchasing behaviour, segment customers, and identify groups for targeted retention and marketing strategies.</p><div class="tagrow"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">RFM Analysis</span><span class="tag">K-Means</span><span class="tag">Power BI</span><span class="tag">Data Quality</span></div></div></div>
+<div class="project-body"><div class="case-grid">
+<div class="case-block"><h4>Business problem and context</h4><p>Businesses need to understand which customers purchase frequently, generate higher revenue, are newly active, or may be at risk of becoming inactive. This project turns transaction and engagement data into interpretable customer profiles that support retention and marketing decisions.</p></div>
+<div class="case-block"><h4>Objective and key questions</h4><ul><li>Which customers are high-value, loyal, or newly active?</li><li>Which customers appear at risk of becoming inactive?</li><li>How do customer count and revenue share differ by segment?</li><li>How do recency, frequency, and spending vary across segments?</li><li>Which segments warrant targeted retention or re-engagement efforts?</li></ul></div>
+<div class="case-block"><h4>Data and tools</h4><p>Customer CRM, orders, and web-log datasets combined at customer level. Processed with Python and Pandas, with Excel analysis outputs and a Power BI dashboard/report.</p></div>
+<div class="case-block"><h4>Analytical approach</h4><ul><li>Standardized column names, parsed dates, removed duplicate customer/order IDs, handled missing values, and excluded invalid order amounts.</li><li>Built customer-level order and engagement summaries.</li><li>Calculated Recency, Frequency, and Monetary (RFM) metrics plus average order value and purchase-velocity features.</li><li>Scaled behavioural features and used K-Means clustering, with elbow and silhouette analysis to assess cluster counts.</li><li>Profiled segments by customer count, revenue share, recency, frequency, and spending.</li></ul></div>
+</div>
+<h4>Key highlights from the project</h4><div class="insights">
+<div class="insight"><strong>3 datasets</strong><span>CRM, orders, and web logs combined into one customer-level view.</span></div>
+<div class="insight"><strong>RFM</strong><span>Recency, Frequency, and Monetary metrics, plus average order value and purchase velocity.</span></div>
+<div class="insight"><strong>K-Means</strong><span>Clustering on scaled features, with elbow and silhouette analysis to assess cluster counts.</span></div>
+<div class="insight"><strong>4 profile measures</strong><span>Segments compared by customer count, revenue share, recency, and spending.</span></div>
+<div class="insight"><strong>Data quality</strong><span>Duplicates removed, dates parsed, missing values handled, and invalid order amounts excluded.</span></div>
+<div class="insight"><strong>Power BI</strong><span>Segment results presented in a dashboard/report for stakeholder review.</span></div>
+</div>
+<div class="case-grid" style="margin-top:22px">
+<div class="case-block"><h4>Business recommendations</h4><ul><li>Prioritize retention initiatives for high-value and loyal customer groups.</li><li>Investigate at-risk or dormant customers for targeted re-engagement.</li><li>Compare customer share with revenue share by segment before allocating marketing effort.</li><li>Use segment profiles to shape marketing hypotheses and measure future campaign outcomes.</li></ul></div>
+<div class="case-block"><h4>Expected value and project files</h4><p>The segmentation gives stakeholders interpretable customer groups to guide follow-up decisions; no campaign uplift or revenue impact was measured. Supporting files include the Python analysis, Excel outputs, and Power BI dashboard.</p><div class="project-links"><a href="https://github.com/iamvikash28/Customer-Segmentation-Dashboard" target="_blank" rel="noopener">Find project files on GitHub ↗</a></div></div>
+</div></div></article>
+<article class="project"><div class="project-top"><div><div class="project-number">ANALYTICS PROJECT 04 · GENERATIVE AI + SQL</div><h3>Natural Language to SQL Chatbot</h3><p>A conversational analytics prototype that translates plain-English questions into read-only SQL queries, executes them against a sample SQLite shop database, and displays results in a Streamlit interface.</p><div class="tagrow"><span class="tag">Python</span><span class="tag">Gemini API</span><span class="tag">Prompt Engineering</span><span class="tag">SQLite</span><span class="tag">SQL Safety</span><span class="tag">Streamlit</span></div></div></div>
+<div class="project-body"><div class="case-grid">
+<div class="case-block"><h4>Business problem and context</h4><p>Non-technical users often need data answers but lack the SQL skills to write queries independently. The prototype explores a natural-language interface for asking questions about sales, customers, products, and orders.</p></div>
+<div class="case-block"><h4>Objective and key questions</h4><ul><li>Can plain-English questions be translated into accurate SQL?</li><li>How can the model be grounded in the actual database schema?</li><li>How can generated queries be restricted to safe, read-only operations?</li><li>How can SQL and results be shown clearly to non-technical users?</li></ul></div>
+<div class="case-block"><h4>Data and tools</h4><p>Python, Streamlit, Pandas, Google Gemini API, SQLite, and a sample relational database with customers, products, and orders.</p></div>
+<div class="case-block"><h4>Analytical approach</h4><ul><li>Read the SQLite database schema and supplied table/column context to the language model.</li><li>Used the Gemini API to generate one SQL query from the user's question.</li><li>Removed response formatting and validated the generated query before execution.</li><li>Allowed only safe, read-only SELECT queries and blocked unsafe or multi-statement SQL.</li><li>Ran approved queries and presented the SQL and results in a Streamlit chat UI.</li></ul></div>
+</div>
+<h4>Key highlights from the project</h4><div class="insights">
+<div class="insight"><strong>3 tables</strong><span>Customers, products, and orders in the sample SQLite database.</span></div>
+<div class="insight"><strong>1 query</strong><span>A single SQL statement generated per question using the Gemini API.</span></div>
+<div class="insight"><strong>SELECT-only</strong><span>Unsafe and multi-statement SQL is blocked before execution.</span></div>
+<div class="insight"><strong>Schema-grounded</strong><span>Table and column context is supplied to the model with each question.</span></div>
+<div class="insight"><strong>Transparent</strong><span>The generated SQL is shown alongside the results.</span></div>
+<div class="insight"><strong>Streamlit</strong><span>Chat-style interface built for non-technical users.</span></div>
+</div>
+<div class="case-grid" style="margin-top:22px">
+<div class="case-block"><h4>Business recommendations</h4><ul><li>Review generated SQL for correctness before relying on results in decisions.</li><li>Apply database-level access controls in addition to SELECT-only validation before any real-data use.</li><li>Test with a broader set of business questions to measure query accuracy.</li><li>Extend to larger schemas with logging and user feedback in a future version.</li></ul><p style="margin-top:12px"><strong>Example questions:</strong> Which product category sells the most? Show the top customers by revenue. What are total sales by city? How many orders were placed in a selected year?</p></div>
+<div class="case-block"><h4>Expected value and project files</h4><p>Designed to reduce the technical barrier to exploratory querying; no measured productivity improvement or production deployment is claimed. AI-generated SQL must be checked for correctness and access controls before use. SELECT-only validation is a safety measure, not a guarantee that every query is accurate or production-ready.</p><div class="project-links"><a href="https://github.com/iamvikash28/nl2sql" target="_blank" rel="noopener">View project on GitHub ↗</a></div></div>
+</div></div></article>
+</div></section>
 
-      <div class="kpi-card reveal">
-        <div class="kpi-card-head">
-          <span class="kpi-dot"></span>
-          <span class="kpi-title">Operations snapshot</span>
-          <span class="kpi-live">INTERACTIVE</span>
-        </div>
-        <div class="kpi-tabs" role="tablist">
-          <button class="kpi-tab active" data-view="time" role="tab" aria-selected="true">Reporting time</button>
-          <button class="kpi-tab" data-view="loyalty" role="tab" aria-selected="false">Repeat customers</button>
-          <button class="kpi-tab" data-view="volume" role="tab" aria-selected="false">Monthly volume</button>
-        </div>
-
-        <div class="kpi-views">
-          <div class="kpi-view active" data-view="time">
-            <div class="kpi-headline">
-              <span class="kpi-num-big">35</span><span class="kpi-unit">min</span>
-              <span class="kpi-delta">↓ 80%</span>
-            </div>
-            <div class="kpi-compare">
-              <div class="kpi-compare-row">
-                <span class="kpi-compare-label">Manual, before</span>
-                <div class="kpi-track"><div class="kpi-fill" data-w="100"></div></div>
-                <span class="kpi-compare-val">180 min</span>
-              </div>
-              <div class="kpi-compare-row">
-                <span class="kpi-compare-label">Automated, now</span>
-                <div class="kpi-track"><div class="kpi-fill accent" data-w="19"></div></div>
-                <span class="kpi-compare-val">35 min</span>
-              </div>
-            </div>
-            <p class="kpi-caption">Recurring KPI reports automated with Pivot Tables, XLOOKUP/VLOOKUP, SUMIFS, and IF formulas.</p>
-          </div>
-
-          <div class="kpi-view" data-view="loyalty">
-            <div class="kpi-radial-wrap">
-              <div class="kpi-radial" data-target="40">
-                <div class="kpi-radial-hole">40%</div>
-              </div>
-              <div class="kpi-radial-legend">
-                <p class="kpi-headline-sm">Repeat buyers</p>
-                <p>Of 90 unique monthly customers, found through purchase-pattern analysis.</p>
-              </div>
-            </div>
-            <p class="kpi-caption">Used to guide inventory planning and procurement for high-demand products.</p>
-          </div>
-
-          <div class="kpi-view" data-view="volume">
-            <div class="kpi-trio">
-              <div><strong>~130</strong><small>transactions&nbsp;/&nbsp;mo</small></div>
-              <div><strong>₹14.0L</strong><small>monthly sales</small></div>
-              <div><strong>₹10.8K</strong><small>avg. bill</small></div>
-            </div>
-            <p class="kpi-caption">Tracked across daily sales, inventory, and customer records.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STATS BAND -->
-  <section class="stats-band">
-    <div class="wrap stats-grid reveal">
-      <div><span class="stat-num" data-target="5000" data-suffix="+">0</span><span class="stat-label">Orders analyzed</span></div>
-      <div><span class="stat-num" data-target="9000" data-suffix="+">0</span><span class="stat-label">Customers segmented</span></div>
-      <div><span class="stat-num" data-target="3" data-suffix="">0</span><span class="stat-label">End-to-end dashboards shipped</span></div>
-      <div><span class="stat-num" data-target="80" data-suffix="%">0</span><span class="stat-label">Faster reporting turnaround</span></div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="wrap">
-    <div class="section-top reveal">
-      <p class="eyebrow">About</p>
-      <h2>Built on the sales floor,<br>refined with data.</h2>
-    </div>
-    <div class="about-layout reveal">
-      <div class="about-copy">
-        <p>Before I wrote a line of SQL, I was closing out a jewellery store's books by hand — reconciling the day's sales, flagging slow-moving stock, and trying to remember which customers kept coming back. That's still my day job. What's changed is the toolkit: the same questions I used to answer with a calculator and a notebook, I now answer with <strong>SQL, Power BI, and Python</strong>.</p>
-        <p>I hold a B.Tech in Computer Science from JSS Academy of Technical Education, with a Diploma and coursework toward an M.Tech in Data Science. Over the past year I've used that foundation to build three end-to-end BI projects — spanning retail, jewellery, and customer analytics — designed to show the range a BI team actually needs: querying, modeling, and reporting that holds up when someone asks "why?"</p>
-      </div>
-      <div class="about-pillars">
-        <div class="pillar">
-          <span class="pillar-mark">01</span>
-          <div><strong>Business context</strong><p>I know why a number moved, not just that it moved — three years of watching sales and stock in a real store.</p></div>
-        </div>
-        <div class="pillar">
-          <span class="pillar-mark">02</span>
-          <div><strong>Technical fluency</strong><p>SQL, Python, and Power BI, applied to operating data — not just tutorial datasets.</p></div>
-        </div>
-        <div class="pillar">
-          <span class="pillar-mark">03</span>
-          <div><strong>Reporting ownership</strong><p>I've built and maintained reporting that a real business checks every week.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills" class="wrap">
-    <div class="section-top reveal">
-      <p class="eyebrow">Toolkit</p>
-      <h2>What I work with</h2>
-    </div>
-    <div class="skills-grid reveal">
-      <div class="skill-card">
-        <span class="cat">Programming &amp; Data Analysis</span>
-        <ul><li>Python (Pandas, NumPy)</li><li>SQL</li><li>Excel (Pivot Tables, LOOKUPs, Power Query)</li></ul>
-      </div>
-      <div class="skill-card">
-        <span class="cat">BI &amp; Visualization</span>
-        <ul><li>Power BI</li><li>DAX</li><li>Plotly, Matplotlib</li></ul>
-      </div>
-      <div class="skill-card">
-        <span class="cat">Analytics</span>
-        <ul><li>Data Cleaning, EDA</li><li>KPI Reporting</li><li>Customer Segmentation (RFM)</li></ul>
-      </div>
-      <div class="skill-card">
-        <span class="cat">Tools</span>
-        <ul><li>Git / GitHub</li><li>SQLite</li><li>VS Code</li></ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience" class="wrap">
-    <div class="section-top reveal">
-      <p class="eyebrow">Experience</p>
-      <h2>Where the numbers started</h2>
-    </div>
-    <div class="exp-card reveal">
-      <div>
-        <div class="exp-role">Business Operations Associate<br>(Data &amp; Reporting)</div>
-        <div class="exp-org">Jewellery Retail Business · 2022 — Present</div>
-      </div>
-      <ul class="exp-list">
-        <li>Analyzed sales, inventory, and customer transaction data (~130 transactions/month, ~₹14.0L monthly sales, ~₹10.8K average bill value) in Excel to identify demand trends and optimize product assortment.</li>
-        <li>Automated recurring KPI reports using Pivot Tables, XLOOKUP/VLOOKUP, SUMIFS, and IF formulas — cutting reporting time from ~3 hours to ~35 minutes.</li>
-        <li>Cleaned and validated daily sales, inventory, and customer records to improve reporting accuracy.</li>
-        <li>Identified repeat customers (~40% of 90 unique monthly customers) through purchase-pattern analysis, supporting inventory planning and procurement.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="wrap">
-    <div class="section-top reveal">
-      <p class="eyebrow">Selected work</p>
-      <h2>Three projects, one thread.</h2>
-      <p>Each one builds a real BI pipeline — from raw or synthetic data through SQL and Excel to a Power BI dashboard someone could actually use.</p>
-    </div>
-
-    <div class="projects reveal">
-
-      <article class="proj-card">
-        <div class="proj-top">
-          <span class="proj-idx mono">01 / Jewellery</span>
-          <div class="proj-tags"><span class="tag">Python</span><span class="tag">Excel</span><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">DAX</span></div>
-        </div>
-        <h3>Jewellery Sales Analytics Dashboard</h3>
-        <p class="proj-desc">End-to-end jewellery retail analytics on a synthetic 500+ transactions dataset — Python pipeline, Power BI dashboard.</p>
-        <div class="proj-detail">
-          <ul>
-            <li>Synthetic dataset (650 transactions) modeled on Gold, Silver, and Diamond category sales, patterned on real jewellery retail behaviour.</li>
-            <li>Data pipeline built in Python (OpenPyXL); cleaned and analyzed in Excel/SQL; visualized in an interactive Power BI dashboard.</li>
-            <li>Covered revenue trends, category performance, customer behaviour, payment methods, and city-wise sales distribution.</li>
-            <li>Surfaced seasonal sales patterns, category revenue contribution, and high-value customer transactions.</li>
-          </ul>
-        </div>
-        <div class="proj-foot">
-          <button class="proj-toggle" aria-expanded="false">+ Details</button>
-          <a href="https://github.com/iamvikash28/Jewellery_Sales_Analysis" target="_blank" rel="noopener">Code ↗</a>
-        </div>
-      </article>
-
-      <article class="proj-card">
-        <div class="proj-top">
-          <span class="proj-idx mono">02 / Retail</span>
-          <div class="proj-tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Excel</span><span class="tag">Power BI</span><span class="tag">DAX</span></div>
-        </div>
-        <h3>Retail Store Analytics Dashboard</h3>
-        <p class="proj-desc">A 5,000+ order BI pipeline — 30+ SQL queries and 7 DAX measures behind an 11-visual Power BI dashboard.</p>
-        <div class="proj-detail">
-          <ul>
-            <li>End-to-end pipeline on 5,000+ retail orders: a Python-generated dataset run through 30+ SQL queries into Power BI.</li>
-            <li>7 DAX measures — YoY growth, AOV, profit margin — powering 11 visuals and 5 interactive slicers.</li>
-            <li>Flagged high-discount, low-margin SKUs eroding profit through regional and category-level analysis.</li>
-          </ul>
-        </div>
-        <div class="proj-foot">
-          <button class="proj-toggle" aria-expanded="false">+ Details</button>
-          <a href="https://github.com/iamvikash28/Retail_Project" target="_blank" rel="noopener">Code ↗</a>
-        </div>
-      </article>
-
-      <article class="proj-card">
-        <div class="proj-top">
-          <span class="proj-idx mono">03 / Segmentation</span>
-          <div class="proj-tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">RFM</span></div>
-        </div>
-        <h3>Customer Segmentation Dashboard</h3>
-        <p class="proj-desc">9,000+ customers segmented into 7 behavioral groups using RFM analysis in Power BI.</p>
-        <div class="proj-detail">
-          <ul>
-            <li>Segmented 9,000+ customers into 7 behavioral groups — Champions, At-risk, Lost, and others — using RFM analysis.</li>
-            <li>8+ DAX measures — weighted averages, revenue share %, YoY deltas — powering 5 KPI cards and 4 visuals.</li>
-          </ul>
-        </div>
-        <div class="proj-foot">
-          <button class="proj-toggle" aria-expanded="false">+ Details</button>
-          <a href="https://github.com/iamvikash28/Customer-Segmentation-Dashboard" target="_blank" rel="noopener">Code ↗</a>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- CERTIFICATIONS -->
-  <section id="certifications" class="wrap">
-    <div class="section-top reveal">
-      <p class="eyebrow">Certifications</p>
-      <h2>Practiced on real-shaped problems</h2>
-    </div>
-    <div class="certs reveal">
-      <div class="cert-card">
-        <div class="cert-org">Deloitte Australia</div>
-        <div class="cert-note">Data Analytics Job Simulation · Forage</div>
-        <p>Forensic-technology data analysis, Tableau dashboarding, and Excel-based data classification.</p>
-        <div class="cert-id">Credential ID: L7MA7P49xqiANd5aq</div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-org">Tata Group</div>
-        <div class="cert-note">Data Analytics Job Simulation · Forage</div>
-        <p>GenAI-driven EDA, delinquency-risk modeling, and agentic AI collections strategy.</p>
-        <div class="cert-id">Credential ID: 2qNrikTA53p2khrRy</div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-org">Forage Academy</div>
-        <div class="cert-note">Data Labeling Job Simulation</div>
-        <p>Intent, sentiment &amp; PII classification, labeling-schema QA, and human-AI collaboration for AI ops and trust &amp; safety workflows.</p>
-        <div class="cert-id">Credential ID: 6a46b493af220e4c45add2c4</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section id="education" class="wrap">
-    <div class="section-top reveal">
-      <p class="eyebrow">Education</p>
-      <h2>Grounding</h2>
-    </div>
-    <div class="timeline reveal">
-      <div class="tl-item">
-        <div class="role">M.Tech, Data Science</div>
-        <div class="org">DAVV, Indore (M.P.) · 2020 — 2022</div>
-        <div class="desc">Coursework completed through Semester 2</div>
-      </div>
-      <div class="tl-item">
-        <div class="role">B.Tech, Computer Science & Engineering</div>
-        <div class="org">JSS Academy of Technical Education, Noida (U.P.) · 2016 — 2019</div>
-      </div>
-      <div class="tl-item">
-        <div class="role">Diploma, Computer Science & Engineering</div>
-        <div class="org">SAMS Group of Institutions, Varanasi (U.P.) · 2013 — 2016</div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<!-- CONTACT -->
-<footer id="contact">
-  <div class="wrap">
-    <p class="eyebrow reveal">Contact</p>
-    <h2 class="reveal">Let's talk about your data.</h2>
-    <p class="lede reveal">Open to entry-level Data Analyst and Business Intelligence roles across Delhi NCR and remote.</p>
-    <div class="contact-cards reveal">
-      <a class="contact-card" href="mailto:vikashverma566@gmail.com">
-        <span class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></span>
-        <span class="cc-label">Email</span>
-        <span class="cc-value">vikashverma566@gmail.com</span>
-      </a>
-      <a class="contact-card" href="tel:+919506431128">
-        <span class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9z"></path></svg></span>
-        <span class="cc-label">Phone</span>
-        <span class="cc-value">+91 9506431128</span>
-      </a>
-      <a class="contact-card" href="https://linkedin.com/in/iamvikash28" target="_blank" rel="noopener">
-        <span class="cc-badge">in</span>
-        <span class="cc-label">LinkedIn</span>
-        <span class="cc-value">iamvikash28</span>
-      </a>
-      <a class="contact-card" href="https://github.com/iamvikash28" target="_blank" rel="noopener">
-        <span class="cc-badge">GH</span>
-        <span class="cc-label">GitHub</span>
-        <span class="cc-value">iamvikash28</span>
-      </a>
-    </div>
-    <div class="foot-note">
-      <span>© <span id="year"></span> Vikash Verma</span>
-    </div>
-  </div>
-</footer>
-
+<section class="section" id="skills"><div class="wrap"><div class="section-head"><div class="eyebrow">Skills</div><h2>Skills demonstrated in project work.</h2><p>Focused on skills that are evidenced by the two case studies rather than a long, unsupported keyword list.</p></div><div class="skills-grid">
+<div class="skill-card"><h3>Business analysis</h3><p>Business problem framing, stakeholder analysis, BRD, functional/non-functional requirements, user stories, acceptance criteria, scope, assumptions, risks, prioritization, process mapping, and requirements traceability.</p></div>
+<div class="skill-card"><h3>Data & KPI analysis</h3><p>SQL (SQLite and MySQL), data-quality checks, operational KPI definitions, trend and category analysis, SLA compliance, backlog ageing, payment and fulfilment analysis.</p></div>
+<div class="skill-card"><h3>Reporting & tools</h3><p>Power BI dashboard design, Excel-based tracking, Python, pandas, Flask prototype, TF-IDF/Logistic Regression proof of concept, GitHub documentation.</p></div>
+<div class="skill-card"><h3>Testing & validation</h3><p>UAT test-case design, defect logging, requirements-to-test traceability, test outcomes, data validation, and explicit documentation of assumptions and limitations.</p></div>
+<div class="skill-card"><h3>Communication</h3><p>Structured case-study writing, process diagrams, executive KPI framing, evidence-backed recommendations, and clear distinction between measured findings and proposed value.</p></div>
+<div class="skill-card"><h3>Business mindset</h3><p>Connecting operational symptoms to possible causes, separating root-cause hypotheses from proven findings, and prioritizing recommendations that can be monitored with defined KPIs.</p></div>
+</div></div></section>
+<section class="section alt" id="education"><div class="wrap"><div class="section-head"><div class="eyebrow">Education</div><h2>Education</h2></div><div class="education">
+<div class="edu"><h3>B.Tech, Computer Science & Engineering</h3><p>JSS Academy of Technical Education, Noida, Uttar Pradesh · 2016–2019</p></div>
+<div class="edu"><h3>Diploma, Computer Science & Engineering</h3><p>SAMS Group of Institutions, Varanasi, Uttar Pradesh · 2013–2016</p></div>
+</div></div></section>
+<section class="section" id="certifications"><div class="wrap"><div class="section-head"><div class="eyebrow">Certifications</div><h2>Job simulations and applied learning.</h2></div><div class="cert-list">
+<div class="cert"><strong>Simplilearn</strong><span>SQL for Data Analysis</span></div>
+<div class="cert"><strong>Microsoft</strong><span>Design Power BI reports</span></div>
+<div class="cert"><strong>Forage Academy</strong><span>Data Labeling Job Simulation</span></div>
+</div></div></section>
+<section class="section alt" id="contact"><div class="wrap"><div class="contactbox"><div><div class="eyebrow" style="color:#a9beff">Contact</div><h2 style="margin:7px 0 0">Let’s discuss business problems.</h2><p>Open to Entry-Level Business Analyst, Junior Business Analyst, and Business Analyst Intern opportunities in India.</p></div><div class="contactlinks"><a href="mailto:vikashverma566@gmail.com">Email</a><a href="https://www.linkedin.com/in/iamvikash28" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://github.com/iamvikash28" target="_blank" rel="noopener">GitHub ↗</a><a href="resume.pdf" target="_blank" rel="noopener">Resume ↗</a></div></div></div></section>
+</main><footer class="footer"><div class="wrap">© <span id="year">2026</span> Vikash Verma ·</div></footer>
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // mobile nav
-  var navToggle = document.getElementById('navToggle');
-  var navLinksEl = document.querySelector('.nav-links');
-  navToggle.addEventListener('click', function () {
-    navLinksEl.classList.toggle('open');
-  });
-
-  // scroll reveal
-  var revealObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(function (el) { revealObserver.observe(el); });
-
-  // scroll-spy nav
-  var navAnchors = document.querySelectorAll('.nav-links a');
-  var spyTargets = Array.prototype.slice.call(navAnchors).map(function (a) {
-    return document.querySelector(a.getAttribute('href'));
-  }).filter(Boolean);
-  var spyObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        var id = '#' + entry.target.id;
-        navAnchors.forEach(function (l) {
-          l.classList.toggle('active', l.getAttribute('href') === id);
-        });
-      }
-    });
-  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-  spyTargets.forEach(function (t) { spyObserver.observe(t); });
-
-  // KPI panel tabs
-  var kpiTabs = document.querySelectorAll('.kpi-tab');
-  var kpiViews = document.querySelectorAll('.kpi-view');
-  function activateKpi(name) {
-    kpiTabs.forEach(function (t) {
-      var on = t.getAttribute('data-view') === name;
-      t.classList.toggle('active', on);
-      t.setAttribute('aria-selected', on ? 'true' : 'false');
-    });
-    kpiViews.forEach(function (v) {
-      var on = v.getAttribute('data-view') === name;
-      v.classList.toggle('active', on);
-      v.setAttribute('aria-hidden', on ? 'false' : 'true');
-      if (on) {
-        requestAnimationFrame(function () {
-          v.querySelectorAll('.kpi-fill').forEach(function (f) {
-            f.style.width = f.getAttribute('data-w') + '%';
-          });
-          v.querySelectorAll('.kpi-radial').forEach(function (r) {
-            r.style.setProperty('--pct', r.getAttribute('data-target') + '%');
-          });
-        });
-      }
-    });
-  }
-  kpiTabs.forEach(function (t) {
-    t.addEventListener('click', function () { activateKpi(t.getAttribute('data-view')); });
-  });
-  var kpiCard = document.querySelector('.kpi-card');
-  if (kpiCard) {
-    var kpiObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          activateKpi('time');
-          kpiObserver.disconnect();
-        }
-      });
-    }, { threshold: 0.3 });
-    kpiObserver.observe(kpiCard);
-  }
-
-  // project detail toggles
-  document.querySelectorAll('.proj-toggle').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var card = btn.closest('.proj-card');
-      var detail = card.querySelector('.proj-detail');
-      var isOpen = detail.classList.toggle('open');
-      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      btn.textContent = isOpen ? '\u2013 Hide details' : '+ Details';
-    });
-  });
-
-  // count-up stats
-  function countUp(el) {
-    var target = parseInt(el.getAttribute('data-target'), 10);
-    var suffix = el.getAttribute('data-suffix') || '';
-    var dur = 1100;
-    var start = performance.now();
-    function tick(now) {
-      var p = Math.min((now - start) / dur, 1);
-      var eased = 1 - Math.pow(1 - p, 3);
-      var val = Math.round(target * eased);
-      el.textContent = val.toLocaleString('en-IN') + suffix;
-      if (p < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  }
-  var statObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.querySelectorAll('.stat-num').forEach(countUp);
-        statObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.4 });
-  document.querySelectorAll('.stats-grid').forEach(function (el) { statObserver.observe(el); });
+const menu=document.querySelector('.menu');const nav=document.querySelector('#navlinks');
+menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');}));
+document.querySelector('#year').textContent=new Date().getFullYear();
 </script>
-
-</body>
-</html>
+</body></html>
